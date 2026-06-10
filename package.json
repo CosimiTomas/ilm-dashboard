@@ -1,0 +1,8 @@
+{
+  "name": "ilm-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard de Equipos Informáticos - Instituto Leonardo Murialdo",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

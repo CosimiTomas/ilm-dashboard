@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Equipos — ILM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div class="logo" style="background:transparent;padding:2px;"><img src="data:image/png;base64,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" style="width:40px;height:40px;object-fit:contain;"></div>
+    <div class="header-title">
+      <h1>Relevamiento de Equipos Informáticos</h1>
+      <p>Instituto Leonardo Murialdo &middot; Panel de gestión técnica</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <button class="btn btn-ghost" onclick="openImport()">&#128229; Importar JSON</button>
+    <button class="btn btn-ghost" onclick="saveToSheet(false)" title="Sincronizar con Google Sheets" style="background:rgba(34,201,122,.12);color:var(--green);border-color:rgba(34,201,122,.3);">&#128260; Sync Sheet</button>
+    <button class="btn btn-ghost" onclick="exportJSON()">&#128228; Exportar JSON</button>
+    <button class="btn btn-warn" onclick="openPDF()">&#128424; Exportar PDF</button>
+    <button class="btn btn-ghost" onclick="openScan()" title="Agregar PCs desde fotos" style="background:rgba(124,58,237,.15);color:#a78bfa;border-color:rgba(124,58,237,.3);">&#128247; Escanear fotos</button>
+    <button class="btn btn-primary" onclick="openAddPC()">&#65291; Agregar PC</button>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-tab active" onclick="switchPage('dashboard',this)">&#128202; Dashboard</div>
+  <div class="nav-tab" onclick="switchPage('inventario',this)">&#128187; Inventario</div>
+  <div class="nav-tab" onclick="switchPage('alertas',this)">&#9888; Alertas <span id="alert-count-badge" style="background:rgba(240,82,82,0.2);color:var(--red);font-size:10px;padding:1px 7px;border-radius:10px;margin-left:2px;display:none;"></span></div>
+  <div class="nav-tab" onclick="switchPage('historial',this)">&#128203; Historial</div>
+
+</nav>
+
+<main class="main">
+  <!-- DASHBOARD -->
+  <div class="page active" id="page-dashboard">
+    <div class="status-bar">
+      <div class="status-dot"></div>
+      <strong>Sistema activo</strong>
+      <span style="color:var(--text3)">&middot;</span>
+      <span style="color:var(--text2)" id="last-update">Cargando&hellip;</span>
+    </div>
+    <div class="metrics" id="metrics"></div>
+    <div class="charts-grid">
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Estado por aula</div><div class="card-sub">Operativas vs. no operativas</div></div><span class="card-badge" id="badge-op"></span></div>
+        <div class="legend"><div class="legend-item"><span class="legend-dot" style="background:#4f7cff"></span>Operativas</div><div class="legend-item"><span class="legend-dot" style="background:#f05252"></span>No operativas</div></div>
+        <div style="position:relative;height:190px;"><canvas id="chartAula"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Distribución de RAM</div><div class="card-sub">Todas las PCs operativas</div></div></div>
+        <div class="legend" id="legend-ram"></div>
+        <div style="position:relative;height:190px;"><canvas id="chartRAM"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Modelos de CPU</div><div class="card-sub">Top 6 entre todas las aulas</div></div></div>
+        <div style="position:relative;" id="cpuWrap"><canvas id="chartCPU"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Tipo de almacenamiento</div><div class="card-sub">HDD vs. SSD por aula</div></div></div>
+        <div class="legend"><div class="legend-item"><span class="legend-dot" style="background:#14b8a6"></span>SSD</div><div class="legend-item"><span class="legend-dot" style="background:#5a6070"></span>HDD</div></div>
+        <div style="position:relative;height:190px;"><canvas id="chartDisco"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVENTARIO -->
+  <div class="page" id="page-inventario">
+    <div class="section-header">
+      <div class="section-title">Detalle por aula</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="aula-tabs" id="tabs"></div>
+        <button class="btn btn-ghost btn-sm" onclick="openTransfer()" title="Mover PCs entre aulas" style="white-space:nowrap;">&#128260; Traspasar PCs</button>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-icon">&#128269;</span>
+        <input class="search-input" id="search-input" type="text" placeholder="Buscar CPU, disco, modelo&hellip;" oninput="applyFilters()">
+      </div>
+      <select class="filter-select" id="filter-estado" onchange="applyFilters()">
+        <option value="">Todos los estados</option>
+        <option value="Operativa">Operativa</option>
+        <option value="NO ANDA">No operativa</option>
+      </select>
+      <select class="filter-select" id="filter-ram" onchange="applyFilters()">
+        <option value="">Toda RAM</option>
+        <option value="4">4 GB</option>
+        <option value="8">8 GB</option>
+        <option value="16">16 GB</option>
+      </select>
+      <select class="filter-select" id="filter-disco" onchange="applyFilters()">
+        <option value="">Todos los discos</option>
+        <option value="SSD">SSD</option>
+        <option value="HDD">HDD</option>
+      </select>
+      <button class="btn btn-ghost btn-sm" onclick="clearFilters()">&#10005; Limpiar</button>
+      <span class="filter-count" id="filter-count"></span>
+    </div>
+    <div class="table-wrap">
+      <table><thead id="inv-thead"></thead><tbody id="inv-tbody"></tbody></table>
+    </div>
+  </div>
+
+  <!-- ALERTAS -->
+  <div class="page" id="page-alertas">
+    <div class="section-header">
+      <div class="section-title">Alertas del sistema</div>
+      <span class="card-badge" id="alerts-badge"></span>
+    </div>
+    <div class="alerts-grid" id="alerts-grid"></div>
+  </div>
+
+  <!-- HISTORIAL -->
+  <div class="page" id="page-historial">
+    <div class="section-header">
+      <div class="section-title">Historial de cambios</div>
+      <button class="btn btn-ghost btn-sm" onclick="clearHistory()">&#128465; Limpiar</button>
+    </div>
+    <div class="card" id="history-list"></div>
+  </div>
+
+</main>
+
+<footer class="footer"><strong>Instituto Leonardo Murialdo</strong> &middot; Dashboard de equipos informáticos &middot; Datos editables en tiempo real</footer>
+
+<!-- MODALES -->
+<div class="modal-overlay" id="modal-edit">
+  <div class="modal">
+    <div class="modal-title" id="modal-title">Editar PC</div>
+    <div class="modal-sub" id="modal-sub"></div>
+    <div class="modal-grid" id="modal-fields"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="modal-cancel-btn">Cancelar</button>
+      <button class="btn btn-primary" id="modal-save-btn">&#10003; Guardar</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-import">
+  <div class="modal">
+    <div class="modal-title">Importar datos</div>
+    <div class="modal-sub">Subí un .json exportado o pegá el contenido.</div>
+    <div class="drop-zone" id="drop-zone">
+      <div style="font-size:32px;margin-bottom:8px;">&#128194;</div>
+      <p>Clic para seleccionar un archivo <strong style="color:var(--accent)">.json</strong></p>
+    </div>
+    <input type="file" id="file-in" accept=".json" style="display:none">
+    <textarea class="paste-area" id="paste-area" placeholder="O pegá el JSON aquí&hellip;"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="import-cancel-btn">Cancelar</button>
+      <button class="btn btn-success" id="import-confirm-btn">&#128229; Importar</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-pdf">
+  <div class="modal" style="width:720px;">
+    <div class="modal-title">Vista previa del reporte</div>
+    <div class="modal-sub">Revisá antes de imprimir o guardar como PDF.</div>
+    <div class="pdf-preview" id="pdf-content"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="pdf-cancel-btn">Cerrar</button>
+      <button class="btn btn-warn" id="pdf-print-btn">&#128424; Imprimir / PDF</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+  <!-- MODAL TRASPASO -->
+  <div class="modal-overlay" id="modal-transfer">
+    <div class="modal transfer-modal">
+      <div class="modal-title">&#128260; Traspaso de equipos</div>
+      <div class="modal-sub">Seleccioná las PCs a mover y el aula destino.</div>
+
+      <div class="transfer-grid">
+        <!-- ORIGEN -->
+        <div class="transfer-col">
+          <div class="transfer-col-title">Aula origen</div>
+          <select class="transfer-select" id="transfer-from" onchange="updateTransferFrom()">
+          </select>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:2px;">
+            <span style="font-size:10px;color:var(--text3);">PCs disponibles:</span>
+            <button class="transfer-select-all" onclick="toggleSelectAll()">Seleccionar todas</button>
+            <span class="transfer-count" id="transfer-sel-count">0 seleccionadas</span>
+          </div>
+          <div class="transfer-pc-list" id="transfer-pc-list"></div>
+        </div>
+
+        <!-- FLECHA -->
+        <div class="transfer-arrow">&#8594;</div>
+
+        <!-- DESTINO -->
+        <div class="transfer-col">
+          <div class="transfer-col-title">Aula destino</div>
+          <select class="transfer-select" id="transfer-to" onchange="updateTransferPreview()">
+          </select>
+          <div style="margin-top:2px;font-size:10px;color:var(--text3);">Vista previa tras el traspaso:</div>
+          <div class="transfer-dest-preview" id="transfer-dest-preview">
+            <div class="transfer-dest-empty">Seleccioná PCs para ver la vista previa</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transfer-summary" id="transfer-summary"></div>
+
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeModal('modal-transfer')">Cancelar</button>
+        <button class="btn btn-primary" id="transfer-confirm-btn" onclick="confirmTransfer()" disabled>
+          &#128260; Confirmar traspaso
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL ESCANEAR FOTOS -->
+  <div class="modal-overlay" id="modal-scan">
+    <div class="modal scan-modal">
+      <div class="modal-title">&#128247; Agregar PCs desde fotos</div>
+      <div class="modal-sub">Subí las fotos del Administrador de tareas (CPU, RAM y disco por cada PC). Podés subir fotos de varias PCs a la vez.</div>
+      <div class="usage-bar-wrap" id="scan-usage-bar">
+        <span class="usage-bar-label">&#128247; Análisis disponibles hoy:</span>
+        <div class="usage-bar-track"><div class="usage-bar-fill" id="usage-fill" style="width:100%"></div></div>
+        <span class="usage-bar-count ok" id="usage-count">Cargando...</span>
+      </div>
+
+      <div id="scan-step-1">
+        <div class="scan-aula-select">
+          <label>Aula destino:</label>
+          <select class="filter-select" id="scan-aula-dest" style="width:180px;"></select>
+          <span style="font-size:11px;color:var(--text3);">&#8226; 3 fotos por PC (CPU, RAM, Disco)</span>
+        </div>
+        <div class="scan-drop-area" id="scan-drop" onclick="document.getElementById('scan-file-input').click()">
+          <div class="scan-drop-icon">&#128247;</div>
+          <div class="scan-drop-text">Clic para seleccionar fotos o arrastrá acá</div>
+          <div class="scan-drop-sub">PNG, JPG — podés seleccionar varias a la vez</div>
+        </div>
+        <input type="file" id="scan-file-input" accept="image/*" multiple style="display:none">
+        <div class="scan-previews" id="scan-previews"></div>
+        <div id="scan-status-area"></div>
+      </div>
+
+      <div id="scan-step-2" style="display:none;">
+        <div id="scan-status-area-2"></div>
+        <div class="scan-results" id="scan-results"></div>
+      </div>
+
+      <div class="modal-actions" id="scan-actions">
+        <button class="btn btn-ghost" onclick="closeScan()">Cancelar</button>
+        <button class="btn btn-primary" id="scan-analyze-btn" onclick="analyzePhotos()" disabled>
+          &#10024; Analizar fotos con IA
+        </button>
+      </div>
+
+      <div class="modal-actions" id="scan-actions-2" style="display:none;">
+        <button class="btn btn-ghost" onclick="scanGoBack()">&#8592; Volver</button>
+        <button class="btn btn-primary" id="scan-save-btn" onclick="saveScanResults()">
+          &#10003; Guardar PCs detectadas
+        </button>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
