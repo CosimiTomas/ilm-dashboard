@@ -101,7 +101,7 @@ const FIELDS=[
 let HISTORY=[];
 let activeAula='';
 let editIdx=null,editAula=null,currentPage='dashboard';
-const CC=['#4f7cff','#22c97a','#f5a623','#ec4899','#7c3aed','#14b8a6'];
+const CC=['#6366f1','#34d399','#fbbf24','#f472b6','#8b5cf6','#2dd4bf'];
 
 function allPCs(){return Object.values(DB).flat();}
 function isOp(pc){return pc.estado==='Operativa';}
@@ -137,9 +137,9 @@ function renderCharts(){
   var aulas=Object.keys(DB);
   if(cA)cA.destroy();
   cA=new Chart(document.getElementById('chartAula'),{type:'bar',data:{labels:aulas,datasets:[
-    {label:'Op',data:aulas.map(function(a){return DB[a].filter(isOp).length;}),backgroundColor:'#4f7cff',borderRadius:5},
-    {label:'No op',data:aulas.map(function(a){return DB[a].filter(function(p){return !isOp(p);}).length;}),backgroundColor:'#f05252',borderRadius:5}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#5a6070'}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#5a6070',stepSize:1}}}}});
+    {label:'Op',data:aulas.map(function(a){return DB[a].filter(isOp).length;}),backgroundColor:'#6366f1',borderRadius:6},
+    {label:'No op',data:aulas.map(function(a){return DB[a].filter(function(p){return !isOp(p);}).length;}),backgroundColor:'#fb7185',borderRadius:6}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#71717a'}},y:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#71717a',stepSize:1}}}}});
 
   var ramC={};
   allPCs().filter(isOp).forEach(function(p){if(p.ram_gb&&p.ram_gb!=='—'){var k=p.ram_gb+' GB';ramC[k]=(ramC[k]||0)+1;}});
@@ -157,13 +157,13 @@ function renderCharts(){
   var cpuS=Object.entries(cpuC).sort(function(a,b){return b[1]-a[1];}).slice(0,6);
   document.getElementById('cpuWrap').style.height=Math.max(200,cpuS.length*40+50)+'px';
   if(cC2)cC2.destroy();
-  cC2=new Chart(document.getElementById('chartCPU'),{type:'bar',data:{labels:cpuS.map(function(e){return e[0];}),datasets:[{data:cpuS.map(function(e){return e[1];}),backgroundColor:CC,borderRadius:5}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#5a6070',stepSize:1}},y:{grid:{display:false},ticks:{color:'#8b92a8',font:{size:11}}}}}});
+  cC2=new Chart(document.getElementById('chartCPU'),{type:'bar',data:{labels:cpuS.map(function(e){return e[0];}),datasets:[{data:cpuS.map(function(e){return e[1];}),backgroundColor:CC,borderRadius:5}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#71717a',stepSize:1}},y:{grid:{display:false},ticks:{color:'#a1a1aa',font:{size:11}}}}}});
 
   if(cD)cD.destroy();
   cD=new Chart(document.getElementById('chartDisco'),{type:'bar',data:{labels:aulas,datasets:[
-    {label:'SSD',data:aulas.map(function(a){return DB[a].filter(function(p){return p.disco_tipo&&p.disco_tipo.startsWith('SSD');}).length;}),backgroundColor:'#14b8a6',borderRadius:4},
-    {label:'HDD',data:aulas.map(function(a){return DB[a].filter(function(p){return p.disco_tipo==='HDD';}).length;}),backgroundColor:'#5a6070',borderRadius:4}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{stacked:true,grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#5a6070'}},y:{stacked:true,grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#5a6070',stepSize:1}}}}});
+    {label:'SSD',data:aulas.map(function(a){return DB[a].filter(function(p){return p.disco_tipo&&p.disco_tipo.startsWith('SSD');}).length;}),backgroundColor:'#2dd4bf',borderRadius:5},
+    {label:'HDD',data:aulas.map(function(a){return DB[a].filter(function(p){return p.disco_tipo==='HDD';}).length;}),backgroundColor:'#52525b',borderRadius:5}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{stacked:true,grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#71717a'}},y:{stacked:true,grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#71717a',stepSize:1}}}}});
 }
 
 function renderTabs(){
