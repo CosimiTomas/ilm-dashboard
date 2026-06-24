@@ -1,84 +1,109 @@
-# Dashboard de Equipos Informáticos — ILM
-### Instituto Leonardo Murialdo
+Dashboard de Equipos Informáticos — ILM
 
-Panel de gestión y relevamiento de equipos informáticos para todas las aulas del instituto.
+Aplicación web para la gestión, relevamiento y monitoreo del inventario de equipos informáticos del Instituto Leonardo Murialdo.
 
----
+Antes de este sistema, el instituto no contaba con ningún registro digital de sus equipos: no había planillas, ni base de datos, ni forma de saber el estado de las computadoras de cada aula. Este proyecto resuelve ese problema desde cero, centralizando toda la información en un solo lugar accesible desde cualquier dispositivo.
 
-## 🚀 Ver online
 
-**URL:** `https://TU-USUARIO.github.io/ilm-dashboard`
+¿Qué hace?
 
----
+El sistema permite tener una visión completa y siempre actualizada del parque de equipos del instituto: 57 computadoras distribuidas en 5 aulas, con todos sus datos de hardware, estado operativo y alertas en tiempo real.
 
-## 📁 Estructura de archivos
+Dashboard
 
-```
-ilm-dashboard/
-├── index.html      # Estructura HTML del dashboard
-├── style.css       # Estilos y diseño visual
-├── script.js       # Lógica, datos y gráficos
-└── README.md       # Este archivo
-```
+Pantalla principal con un resumen instantáneo del estado de todos los equipos:
 
----
 
-## ✨ Funcionalidades
+6 métricas clave: total de PCs, operativas, no operativas, con SSD, cantidad de aulas y porcentaje de disponibilidad.
+Gráfico de estado por aula (operativas vs. no operativas).
+Distribución de memoria RAM entre todas las PCs.
+Top de modelos de CPU más comunes.
+Comparativa de HDD vs SSD por aula.
 
-- **Dashboard** — métricas globales y 4 gráficos (estado por aula, RAM, CPU, HDD vs SSD)
-- **Inventario** — tabla completa con filtros por estado, RAM, tipo de disco y búsqueda libre
-- **Alertas** — detección automática de PCs no operativas, velocidad degradada y RAM baja
-- **Historial** — registro de todos los cambios realizados en la sesión
-- **Exportar PDF** — reporte imprimible de todos los equipos
-- **Importar / Exportar JSON** — actualizar datos sin tocar el código
 
----
+Todos los gráficos se actualizan automáticamente al modificar los datos.
 
-## 🛠️ Tecnologías
+Inventario
 
-- HTML5 / CSS3 / JavaScript vanilla
-- [Chart.js 4.4.1](https://www.chartjs.org/) — gráficos
-- [Google Fonts](https://fonts.google.com/) — tipografía Outfit + JetBrains Mono
-- Sin frameworks, sin dependencias locales
+Tabla completa de todas las computadoras con información detallada de hardware: procesador, velocidades, núcleos, caché, memoria RAM, tipo y velocidad, disco, capacidad y observaciones.
 
----
 
-## 📦 Cómo actualizar los datos
+Filtros por aula, estado, RAM, tipo de disco y búsqueda de texto libre.
+Edición y eliminación de equipos desde una interfaz visual.
+Alta manual de nuevas computadoras.
 
-1. En el dashboard, hacé clic en **Exportar JSON**
-2. Editá el archivo o importá datos nuevos con **Importar JSON**
-3. Los datos se actualizan en tiempo real
 
----
+Alertas automáticas
 
-## 🌐 Cómo desplegar en GitHub Pages
+El sistema detecta solo y muestra los equipos que necesitan atención:
 
-### Paso 1 — Crear repositorio
-1. Entrá a [github.com](https://github.com) y creá una cuenta si no tenés
-2. Clic en **New repository**
-3. Nombre: `ilm-dashboard`
-4. Marcá **Public**
-5. Clic en **Create repository**
 
-### Paso 2 — Subir archivos
-1. En el repositorio recién creado, clic en **uploading an existing file**
-2. Arrastrá los 4 archivos: `index.html`, `style.css`, `script.js`, `README.md`
-3. Clic en **Commit changes**
+PCs no operativas.
+Velocidad de CPU degradada (por debajo del 65% de la velocidad base).
+Memoria RAM insuficiente (4 GB o menos).
+Equipos con observaciones pendientes de revisión.
 
-### Paso 3 — Activar GitHub Pages
-1. Ir a **Settings** del repositorio
-2. Sección **Pages** (en el menú lateral)
-3. En **Source** seleccioná **Deploy from a branch**
-4. Branch: **main** / Folder: **/ (root)**
-5. Clic en **Save**
 
-### Paso 4 — Acceder
-- En 1-2 minutos la URL estará disponible en:
-  `https://TU-USUARIO.github.io/ilm-dashboard`
-- Compartí esa URL con todos en el ILM
+Desde cada alerta se puede ir directamente a editar la PC correspondiente.
 
----
+Carga de equipos con Inteligencia Artificial
 
-## 👥 Proyecto
+Una de las funciones más potentes: permite cargar nuevas computadoras simplemente sacando fotos al Administrador de tareas de Windows.
 
-Desarrollado por alumnos de 7° año Informática — Instituto Leonardo Murialdo (2026)
+
+Se suben hasta 4 fotos por PC (etiqueta, CPU, RAM y disco).
+La IA lee las imágenes y extrae automáticamente todas las especificaciones de hardware.
+Detecta el número de PC leyendo la etiqueta física en la foto.
+Procesa varias computadoras a la vez en lotes automáticos.
+Muestra una vista previa editable antes de guardar, para corregir cualquier dato.
+
+
+Traspaso de equipos entre aulas
+
+Permite mover una o varias PCs de un aula a otra con un solo clic, algo muy habitual en el día a día del instituto. El sistema renumera automáticamente los equipos en el aula de origen y destino, y registra el movimiento en el historial.
+
+Sincronización con la nube
+
+Todos los datos se sincronizan automáticamente con Google Sheets, que funciona como base de datos en la nube:
+
+
+Cualquier cambio desde el dashboard se guarda al instante.
+Cualquier cambio hecho directamente en el Sheet se refleja al recargar.
+Los datos quedan accesibles para cualquier persona autorizada, desde cualquier lugar.
+El historial de versiones de Google Drive sirve como backup automático.
+
+
+Historial y reportes
+
+
+Registro cronológico de todos los cambios realizados (altas, ediciones, bajas y traspasos).
+Exportación de reportes en PDF con todos los equipos de todas las aulas.
+Importación y exportación de datos en formato JSON para backup o migración.
+
+
+
+¿Qué NO hace?
+
+Para tener expectativas claras, el sistema:
+
+
+No gestiona el software instalado en cada PC (solo hardware).
+No realiza inventario de periféricos (teclados, monitores, mouse).
+No tiene sistema de usuarios ni control de acceso por contraseña.
+No envía notificaciones automáticas por correo o mensajes.
+No se conecta directamente a las PCs para leer datos en tiempo real.
+
+
+
+Tecnologías
+
+El sistema es una aplicación web de página única (SPA) sin backend tradicional. Toda la lógica corre en el navegador y la persistencia se logra mediante Google Sheets a través de una API REST en Google Apps Script.
+
+TecnologíaUsoJavaScript (ES6+)Lógica completa de la aplicaciónHTML5 + CSS3Estructura y diseño de la interfazChart.jsGráficos interactivos del dashboardGoogle Apps ScriptAPI REST que conecta con la base de datosGoogle SheetsBase de datos en la nubeOpenRouter APIInteligencia artificial / visión por computadoraNode.jsServidor para despliegue en la nube
+
+
+Sobre el proyecto
+
+Desarrollado por alumnos de 7° año Informática (2026) como proyecto escolar real, presentado y aprobado por el instituto.
+
+Instituto Leonardo Murialdo — Panel de gestión técnica
